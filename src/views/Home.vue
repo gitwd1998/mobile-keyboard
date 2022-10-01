@@ -1,34 +1,32 @@
 <template>
-  <div class="scroll-wrap">
-    <div @touchmove.stop="touchmove">
-      <div class="home">
-        <input
-          ref="actual-input"
-          class="actual-input"
-          :style="actualInputStyle"
-          type="text"
-          v-model="value"
-          placeholder="请输入"
-          @focus="actualInputFocus"
-          @blur="actualInputBlur"
-        />
-        <div
-          ref="virtual-input"
-          class="virtual-input"
-          :style="virtualInputStyle"
-          @click="virtualInputClick"
-        >
-          {{ value || "请输入" }}
-        </div>
-
-        <ul style="padding: 0; margin: 0">
-          <li>value = {{ value }}</li>
-          <li>originalHeight = {{ originalHeight }}</li>
-          <li>focusHeight = {{ focusHeight }}</li>
-          <li>keyboreHeight = {{ keyboreHeight }}</li>
-          <li v-for="i in 100" :key="i">{{ i }}</li>
-        </ul>
+  <div class="scroll-wrap" @touchmove.stop="touchmove">
+    <div class="home">
+      <input
+        ref="actual-input"
+        class="actual-input"
+        :style="actualInputStyle"
+        type="text"
+        v-model="value"
+        placeholder="请输入"
+        @focus="actualInputFocus"
+        @blur="actualInputBlur"
+      />
+      <div
+        ref="virtual-input"
+        class="virtual-input"
+        :style="virtualInputStyle"
+        @click="virtualInputClick"
+      >
+        {{ value || "请输入" }}
       </div>
+
+      <ul style="padding: 0; margin: 0">
+        <li>value = {{ value }}</li>
+        <li>originalHeight = {{ originalHeight }}</li>
+        <li>focusHeight = {{ focusHeight }}</li>
+        <li>keyboreHeight = {{ keyboreHeight }}</li>
+        <li v-for="i in 100" :key="i">{{ i }}</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -39,7 +37,7 @@ export default {
   data() {
     return {
       value: "",
-      criticalTime: 300, // 键盘抬起时可以监听到visualViewport.height变化的临界值
+      criticalTime: 400, // 键盘抬起时可以监听到visualViewport.height变化的临界值
       originalHeight: "",
       focusHeight: "",
       actualInputStyle: {},

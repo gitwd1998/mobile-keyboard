@@ -1,25 +1,31 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{ height }">
     <router-view />
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      height: visualViewport.height + "px",
+    };
+  },
+};
+</script>
+
 <style lang="less">
 html,
-body,
-#app {
+body {
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
-  background-color: #ccc;
+  overflow: hidden;
 }
 #app {
-  overflow: hidden;
-  > .scroll-wrap {
-    overflow: auto;
-    height: 100%;
-    width: 100%;
-  }
+  background: #ccc url("./assets/logo.png") center center no-repeat;
+  background-size: 100% 100%;
+  overflow: auto;
 }
 </style>
